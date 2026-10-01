@@ -30,7 +30,6 @@ export default function RootLayout({
         </main>
         <Footer />
       <WhatsAppButton />
-    <MobileBottomNav />
 </body>
     </html>
   );
