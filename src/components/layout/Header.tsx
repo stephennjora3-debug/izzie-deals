@@ -21,7 +21,7 @@ function CartBadge() {
   if (totalItems === 0) return null;
 
   return (
-    <span className="absolute top-0 right-2 md:right-3 flex h-5 w-6 items-center justify-center rounded-full bg-orange-500 text-xs font-bold text-white">
+    <span className="absolute top-0 right-2 md:right-3 flex h-5 w-6 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white ring-2 ring-[#00A651]">
       {totalItems > 99 ? '99+' : totalItems}
     </span>
   );
@@ -52,8 +52,8 @@ export function Header() {
 
   return (
     <header className="w-full flex flex-col">
-      {/* --- TOP AMAZON BAR (bg-slate-900) --- */}
-      <div className="bg-[#131921] text-white py-2 px-4 md:px-8">
+      {/* --- TOP SAFARICOM GREEN BAR --- */}
+      <div className="bg-[#00A651] text-white py-2 px-4 md:px-8">
         <div className="max-w-[1500px] mx-auto flex items-center gap-4 md:gap-6">
           
           {/* Logo */}
@@ -63,7 +63,7 @@ export function Header() {
 
           {/* Deliver To (Hidden on small mobile) */}
           <div className="hidden md:flex flex-col items-start border border-transparent hover:border-white rounded p-1 cursor-pointer transition-all">
-            <span className="text-[11px] text-gray-300 ml-4">Deliver to</span>
+            <span className="text-[11px] text-green-100 ml-4">Deliver to</span>
             <div className="flex items-center font-bold text-sm">
               <MapPin className="h-4 w-4 mr-1" />
               <span>Kenya</span>
@@ -71,7 +71,7 @@ export function Header() {
           </div>
 
           {/* Massive Search Bar */}
-          <form onSubmit={handleSearch} className="flex-grow flex h-10 rounded-md overflow-hidden focus-within:ring-2 focus-within:ring-orange-500 transition-all">
+          <form onSubmit={handleSearch} className="flex-grow flex h-10 rounded-md overflow-hidden focus-within:ring-2 focus-within:ring-white transition-all">
             <select className="hidden md:block bg-gray-100 text-gray-700 text-xs px-2 border-r border-gray-300 focus:outline-none cursor-pointer hover:bg-gray-200">
               <option>All</option>
               <option>Clothing</option>
@@ -85,14 +85,14 @@ export function Header() {
               placeholder="Search Izzie Deals"
               className="flex-grow px-3 text-black focus:outline-none"
             />
-            <button type="submit" className="bg-[#febd69] hover:bg-[#f3a847] px-4 md:px-5 flex items-center justify-center transition-colors">
-              <Search className="h-5 w-5 text-[#131921]" />
+            <button type="submit" className="bg-white hover:bg-gray-100 px-4 md:px-5 flex items-center justify-center transition-colors">
+              <Search className="h-5 w-5 text-[#00A651]" />
             </button>
           </form>
 
           {/* Account & Lists */}
           <div className="hidden md:flex flex-col border border-transparent hover:border-white rounded p-1 cursor-pointer transition-all relative group">
-            <span className="text-[11px] text-gray-300">Hello, sign in</span>
+            <span className="text-[11px] text-green-100">Hello, sign in</span>
             <span className="text-sm font-bold flex items-center">Account & Lists <ChevronDown className="h-3 w-3 ml-1" /></span>
             {/* Dropdown placeholder */}
             <div className="absolute top-full right-0 w-64 bg-white text-black rounded-md shadow-xl p-4 hidden group-hover:block z-50">
@@ -102,7 +102,7 @@ export function Header() {
 
           {/* Returns & Orders (Desktop) */}
           <Link href="/admin/orders" className="hidden md:flex flex-col border border-transparent hover:border-white rounded p-1 transition-all">
-            <span className="text-[11px] text-gray-300">Returns</span>
+            <span className="text-[11px] text-green-100">Returns</span>
             <span className="text-sm font-bold">& Orders</span>
           </Link>
 
@@ -117,8 +117,8 @@ export function Header() {
         </div>
       </div>
 
-      {/* --- BOTTOM NAV BAR (bg-slate-800) --- */}
-      <div className="bg-[#232f3e] text-white text-sm py-2 px-4 md:px-8 flex items-center gap-4 overflow-x-auto whitespace-nowrap scrollbar-hide">
+      {/* --- BOTTOM NAV BAR (Darker Safaricom Green) --- */}
+      <div className="bg-[#007A3D] text-white text-sm py-2 px-4 md:px-8 flex items-center gap-4 overflow-x-auto whitespace-nowrap scrollbar-hide">
         <button className="flex items-center gap-1 font-bold border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0">
           <Menu className="h-5 w-5" /> All
         </button>
@@ -131,7 +131,7 @@ export function Header() {
         <Link href="/shop" className="border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0">Sell</Link>
         
         {isAdminUser && (
-           <Link href="/admin/add-product" className="border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0 text-yellow-400 font-bold">Admin: Add Product</Link>
+           <Link href="/admin/add-product" className="border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0 text-yellow-300 font-bold">Admin: Add Product</Link>
         )}
       </div>
     </header>
