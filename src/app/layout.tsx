@@ -23,14 +23,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} antialiased`}>
-      <body className={`${inter.variable} font-sans antialiased bg-brand-50 text-brand-900 min-h-screen flex flex-col`}>
+      <body className={`${inter.variable} font-sans antialiased bg-gray-100 text-gray-900 min-h-screen flex flex-col`}>
         <Header />
         <main className="flex-grow">
           {children}
         </main>
         <Footer />
-      <WhatsAppButton />
-</body>
+        <WhatsAppButton />
+      </body>
     </html>
   );
 }
