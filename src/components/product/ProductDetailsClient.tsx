@@ -34,7 +34,7 @@ export function ProductDetailsClient({ product }: ProductDetailsClientProps) {
   const availableColors = [...new Set(product.variants.map(v => v.attributes?.Color).filter(Boolean))];
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 sm:pb-8 pb-32">
       {/* Breadcrumb */}
       <nav className="flex items-center text-sm text-brand-600 mb-8">
         <Link href="/" className="hover:text-brand-900">Home</Link>
@@ -175,12 +175,12 @@ export function ProductDetailsClient({ product }: ProductDetailsClientProps) {
               </div>
             )}
 
-            {/* Quantity and Actions */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            {/* Desktop Quantity and Actions */}
+            <div className="hidden sm:flex flex-wrap items-center gap-4">
               <div className="flex items-center border border-brand-300 rounded-md w-max">
                 <button 
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="p-3 hover:bg-brand-50 transition-colors"
+                  className="p-3 hover:bg-brand-50 transition-colors rounded-l-md"
                   disabled={quantity <= 1}
                 >
                   <Minus className="h-4 w-4" />
@@ -188,7 +188,7 @@ export function ProductDetailsClient({ product }: ProductDetailsClientProps) {
                 <span className="w-12 text-center font-medium">{quantity}</span>
                 <button 
                   onClick={() => setQuantity(quantity + 1)}
-                  className="p-3 hover:bg-brand-50 transition-colors"
+                  className="p-3 hover:bg-brand-50 transition-colors rounded-r-md"
                   disabled={isOutOfStock || (currentVariant && quantity >= currentVariant.stockQuantity)}
                 >
                   <Plus className="h-4 w-4" />
@@ -197,7 +197,7 @@ export function ProductDetailsClient({ product }: ProductDetailsClientProps) {
 
               <Button 
                 size="lg" 
-                className="flex-1" 
+                className="flex-1 h-12 text-base font-semibold" 
                 disabled={isOutOfStock}
                 onClick={() => {
                   if (!isOutOfStock) {
@@ -220,13 +220,60 @@ export function ProductDetailsClient({ product }: ProductDetailsClientProps) {
                 {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
               </Button>
               
-              <Button variant="outline" size="lg" className="flex-1">
+              <Button variant="outline" size="lg" className="flex-1 h-12 text-base font-semibold">
                 Buy Now
               </Button>
 
-              <Button variant="ghost" size="icon" className="border border-brand-300">
+              <Button variant="outline" size="icon" className="h-12 w-12 border-brand-300">
                 <Heart className="h-5 w-5" />
               </Button>
+            </div>
+
+            {/* Mobile Sticky Add to Cart (Above Bottom Nav) */}
+            <div className="sm:hidden fixed bottom-16 left-0 right-0 z-30 bg-white border-t border-brand-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] p-4 pb-[calc(1rem+env(safe-area-inset-bottom))]">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center border border-brand-300 rounded-md bg-white">
+                  <button 
+                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                    className="p-3 hover:bg-brand-50 transition-colors rounded-l-md"
+                    disabled={quantity <= 1}
+                  >
+                    <Minus className="h-5 w-5" />
+                  </button>
+                  <span className="w-10 text-center font-semibold text-lg">{quantity}</span>
+                  <button 
+                    onClick={() => setQuantity(quantity + 1)}
+                    className="p-3 hover:bg-brand-50 transition-colors rounded-r-md"
+                    disabled={isOutOfStock || (currentVariant && quantity >= currentVariant.stockQuantity)}
+                  >
+                    <Plus className="h-5 w-5" />
+                  </button>
+                </div>
+
+                <Button 
+                  className="flex-1 h-12 text-base font-bold shadow-sm" 
+                  disabled={isOutOfStock}
+                  onClick={() => {
+                    if (!isOutOfStock) {
+                      addItem({
+                        productId: product.id,
+                        variantId: currentVariant?.id,
+                        name: product.name,
+                        price: displayPrice,
+                        quantity: quantity,
+                        image: product.images[0],
+                        attributes: { 
+                          ...(selectedSize && { Size: selectedSize }), 
+                          ...(selectedColor && { Color: selectedColor }) 
+                        }
+                      });
+                    }
+                  }}
+                >
+                  <ShoppingCart className="mr-2 h-5 w-5" />
+                  {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
+                </Button>
+              </div>
             </div>
           </div>
 
