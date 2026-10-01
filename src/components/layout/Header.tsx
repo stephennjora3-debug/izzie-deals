@@ -58,13 +58,13 @@ export function Header() {
           
           {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink-0 border border-transparent hover:border-white rounded p-1 transition-all">
-            <img src="/izzie.png" alt="Izzie Deals" className="h-8 md:h-10 w-auto object-contain" />
+            <img src="/izzie.png" alt="Izzie Deals" className="h-8 md:h-10 w-auto object-contain bg-white rounded px-2 py-1" />
           </Link>
 
           {/* Deliver To (Hidden on small mobile) */}
           <div className="hidden md:flex flex-col items-start border border-transparent hover:border-white rounded p-1 cursor-pointer transition-all">
             <span className="text-[11px] text-green-100 ml-4">Deliver to</span>
-            <div className="flex items-center font-bold text-sm">
+            <div className="flex items-center font-bold text-sm text-white">
               <MapPin className="h-4 w-4 mr-1" />
               <span>Kenya</span>
             </div>
@@ -83,7 +83,7 @@ export function Header() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search Izzie Deals"
-              className="flex-grow px-3 text-black focus:outline-none"
+              className="flex-grow px-3 text-black focus:outline-none bg-white"
             />
             <button type="submit" className="bg-white hover:bg-gray-100 px-4 md:px-5 flex items-center justify-center transition-colors">
               <Search className="h-5 w-5 text-[#00A651]" />
@@ -93,7 +93,7 @@ export function Header() {
           {/* Account & Lists */}
           <div className="hidden md:flex flex-col border border-transparent hover:border-white rounded p-1 cursor-pointer transition-all relative group">
             <span className="text-[11px] text-green-100">Hello, sign in</span>
-            <span className="text-sm font-bold flex items-center">Account & Lists <ChevronDown className="h-3 w-3 ml-1" /></span>
+            <span className="text-sm font-bold flex items-center text-white">Account & Lists <ChevronDown className="h-3 w-3 ml-1" /></span>
             {/* Dropdown placeholder */}
             <div className="absolute top-full right-0 w-64 bg-white text-black rounded-md shadow-xl p-4 hidden group-hover:block z-50">
                <UserMenu />
@@ -103,32 +103,32 @@ export function Header() {
           {/* Returns & Orders (Desktop) */}
           <Link href="/admin/orders" className="hidden md:flex flex-col border border-transparent hover:border-white rounded p-1 transition-all">
             <span className="text-[11px] text-green-100">Returns</span>
-            <span className="text-sm font-bold">& Orders</span>
+            <span className="text-sm font-bold text-white">& Orders</span>
           </Link>
 
           {/* Cart */}
           <Link href="/cart" className="flex items-end border border-transparent hover:border-white rounded p-1 transition-all relative">
             <div className="relative">
-              <ShoppingCart className="h-8 w-8" />
+              <ShoppingCart className="h-8 w-8 text-white" />
               <CartBadge />
             </div>
-            <span className="font-bold text-sm mb-1 hidden md:inline">Cart</span>
+            <span className="font-bold text-sm mb-1 hidden md:inline text-white">Cart</span>
           </Link>
         </div>
       </div>
 
       {/* --- BOTTOM NAV BAR (Darker Safaricom Green) --- */}
       <div className="bg-[#007A3D] text-white text-sm py-2 px-4 md:px-8 flex items-center gap-4 overflow-x-auto whitespace-nowrap scrollbar-hide">
-        <button className="flex items-center gap-1 font-bold border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0">
+        <button className="flex items-center gap-1 font-bold border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0 text-white">
           <Menu className="h-5 w-5" /> All
         </button>
-        <Link href="/shop" className="border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0">Today's Deals</Link>
-        <Link href="/shop?category=Clothing" className="border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0">Clothing</Link>
-        <Link href="/shop?category=Electronics" className="border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0">Electronics</Link>
-        <Link href="/shipping" className="border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0">Customer Service</Link>
-        <Link href="/shop" className="border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0">Registry</Link>
-        <Link href="/shop" className="border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0">Gift Cards</Link>
-        <Link href="/shop" className="border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0">Sell</Link>
+        <Link href="/shop" className="border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0 text-white">Today's Deals</Link>
+        <Link href="/shop?category=Clothing" className="border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0 text-white">Clothing</Link>
+        <Link href="/shop?category=Electronics" className="border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0 text-white">Electronics</Link>
+        <Link href="/shipping" className="border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0 text-white">Customer Service</Link>
+        <Link href="/shop" className="border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0 text-white">Registry</Link>
+        <Link href="/shop" className="border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0 text-white">Gift Cards</Link>
+        <Link href="/shop" className="border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0 text-white">Sell</Link>
         
         {isAdminUser && (
            <Link href="/admin/add-product" className="border border-transparent hover:border-white rounded px-2 py-1 transition-all flex-shrink-0 text-yellow-300 font-bold">Admin: Add Product</Link>
